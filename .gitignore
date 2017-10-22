@@ -1,0 +1,27 @@
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.sublime-project
+*.sublime-workspace
+
+# Jet Brains IDE
+.idea/
+*.iml
+
+pids
+logs
+results
+build
+logs
+
+npm-debug.log
+node_modules
+
+direqt.json
+.DS_Store
+

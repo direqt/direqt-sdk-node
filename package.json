@@ -1,0 +1,32 @@
+{
+  "name": "direqt",
+  "version": "0.1.0",
+  "description": "Direqt SDK for JavaScript.",
+  "license": "SEE LICENSE IN LICENSE",
+  "main": "./lib/index.js",
+  "bin": {
+    "direqt": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "jshint ./lib",
+    "lint": "jshint ./lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/direqt/direqt-sdk-js.git"
+  },
+  "author": {
+    "name": "Myk Willis",
+    "email": "myk@direqt.io"
+  },
+  "bugs": {
+    "url": "https://github.com/direqt/direqt-sdk-js/issues"
+  },
+  "homepage": "https://github.com/direqt/direqt-sdk-js",
+  "dependencies": {
+    "minimist": "^1.2.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.5"
+  }
+}
