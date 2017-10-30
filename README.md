@@ -5,8 +5,11 @@ Direqt is a platform for integrating advertisements into conversational media.
 
 The Direqt Software Development Kit (SDK) for JavaScript contains library code, utilities, and examples designed to enable developers to build applications using Direqt and JavaScript. This SDK supports only server-side JavaScript (i.e. Node.js).
 
-    npm install -g direqt               # Install globally on developer machine
-    npm install --save direqt           # install in NPM-based project
+    npm install -g direqt              # Install globally on developer machine
+    direqt register                    # register a Direqt publisher account
+    direqt generate-api-key --global   # get an API key 
+    direqt signin                      # authenticate and save API token in config
+    npm install --save direqt          # install in NPM-based project
 
 ### Quick Peek
 

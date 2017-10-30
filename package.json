@@ -27,6 +27,11 @@
     "minimist": "^1.2.0"
   },
   "devDependencies": {
-    "jshint": "^2.9.5"
+    "colors": "^1.1.2",
+    "jshint": "^2.9.5",
+    "osenv": "^0.1.4",
+    "path": "^0.12.7",
+    "prompt": "^1.0.0",
+    "restler": "^3.4.0"
   }
 }
