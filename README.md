@@ -42,8 +42,15 @@ Before you process messages directed at your webhook, you should verify the requ
 ```typescript
 const app = express();
 
-app.post('/webhook', direqt.messaging.verifyWebhook())
-app.post('/webhook', myDireqtWebhook);
+// the raw request body is required for signature verification
+const rawBodyExtractor = (req, res, buf) => {
+    req.rawBody = buf.toString();
+};
+app.post('/webhook', 
+    express.json({ verify: rawBodyExtractor }),
+    direqt.messaging.verifyMiddleware(),
+    myDireqtWebhook
+    );
 ```
 
 ### Sending messages
