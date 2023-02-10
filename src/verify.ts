@@ -65,7 +65,7 @@ export function verifyBodySignature({
         signingSecret,
         requestSignature,
         requestTimestamp: parseInt(requestTimestamp, 10),
-        body: (req as any).rawBody,
+        body: req['rawBody'] as string,
     });
 }
 

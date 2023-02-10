@@ -1,10 +1,17 @@
-## Direqt SDK for Nodejs
+## Direqt Node.js Library
+------------
 
-The Direqt API provides access to the messaging capabilities supported by the Direqt platform.
+The Direqt Node.js library provides access to the messaging capabilities supported by the Direqt platform.
 
-### Getting started
+> :warning: **This library is meant for server-side usage only.** Do not use it in client-side (browser) code, as it would expose your secret access token.
 
-To initialize your application, create a `DireqtApi` object, providing the required configuration parameters:
+### Installation
+
+$ npm install direqt
+
+### Usage
+
+The library needs to be configured with your chatbot's secret access token and signing secret, which are available in the [Direqt Developer Console](https://console.direqt.io). Here's an example of initializing the library:
 
 ```typescript
 import { DireqtApi } from '@direqt/direqt-sdk-node';
@@ -14,12 +21,9 @@ const direqt = new DireqtApi({
 })
 ```
 
-You can find the required accessToken and signing secret on your chatbot's page in [the Direqt Console](https://console.direqt.io).
-
-
 ### Receiving messages from users
 
-Your chatbot is notified of messages from users via a webhook. The provide the URL of your webhook in the "Webhook" settings associated with your chatbot in the Direqt console.
+Your chatbot is notified of messages from users via a webhook. The provide the URL of your webhook in the "Webhook" settings associated with your chatbot in the Direqt Developer console.
 
 Webhooks are invoked with a simple POST request, giving you access to information about the sender and their message. Here's a simple webhook that captures the text sent by a user and writes it to the console:
 
@@ -55,13 +59,14 @@ app.post('/webhook',
 
 ### Sending messages
 
-To send a message to a user, provide the `userId` (the same value you obtained when the user sent a message to your webhook) and the text to send:
+To send a message to a user, provide the `userId` (the same value you obtained when the user sent a message to your webhook) and the text to send to the `sendTextMessage` method:
 
 ```typescript
-direqt.messaging.sendTextMessage(userId, 'Hello from my chatbot!');
+const result = await direqt.messaging.sendTextMessage(
+    userId, 'Hello from my chatbot!');
 ```
 
-### Additional info
+### Sample code
 
 See the [./samples/echobot/](samples/echobot/) folder for a complete working example.
 
