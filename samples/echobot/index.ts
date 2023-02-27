@@ -5,7 +5,7 @@
  * receive messages.
  */
 import express from 'express';
-//import { DireqtApi } from '@direqt/direqt-sdk-node';
+//import { DireqtApi } from 'direqt';
 import { DireqtApi } from '../../src';
 
 const direqt = new DireqtApi({

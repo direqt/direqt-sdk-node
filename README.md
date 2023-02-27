@@ -7,14 +7,16 @@ The Direqt Node.js library provides access to the messaging capabilities support
 
 ### Installation
 
+```
 $ npm install direqt
+```
 
 ### Usage
 
 The library needs to be configured with your chatbot's secret access token and signing secret, which are available in the [Direqt Developer Console](https://console.direqt.io). Here's an example of initializing the library:
 
 ```typescript
-import { DireqtApi } from '@direqt/direqt-sdk-node';
+import { DireqtApi } from 'direqt';
 const direqt = new DireqtApi({
     accessToken: YOUR_ACCESS_TOKEN,
     signingSecret: YOUR_SIGNING_SECRET
