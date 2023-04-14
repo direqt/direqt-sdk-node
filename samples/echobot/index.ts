@@ -9,8 +9,8 @@ import express from 'express';
 import { DireqtApi } from '../../src';
 
 const direqt = new DireqtApi({
-    accessToken: '',
-    signingSecret: '',
+    accessToken: '<YOUR_ACCESS_TOKEN>',
+    signingSecret: '<YOUR_SIGNING_SECRET>',
 });
 
 const app = express();

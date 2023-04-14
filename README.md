@@ -61,17 +61,30 @@ app.post('/webhook',
 
 ### Sending messages
 
-To send a message to a user, provide the `userId` (the same value you obtained when the user sent a message to your webhook) and the text to send to the `sendTextMessage` method:
+To send a text message to a user, provide the `userId` (the same value you obtained when the user sent a message to your webhook) and the text to send to the `sendTextMessage` method:
 
 ```typescript
 const result = await direqt.messaging.sendTextMessage(
     userId, 'Hello from my chatbot!');
 ```
 
+You can also send other types of content to users, such as cards, carousels, and other rich messaging elements. The [Direqt Messaging API](https://docs.direqt.ai/messaging-api/) defines the format of these messages, which can be sent using the `sendContentMessage` and `sendActionMessage` methods:
+
+```typescript
+const result = await direqt.messaging.sendContentMessage(
+    userId, 
+    { 
+        contentType: 'file',
+        file: {
+            url: 'https://www.example.com/foo.png'
+        }
+    });
+```
+
+
 ### Sample code
 
-See the [./samples/echobot/](samples/echobot/) folder for a complete working example.
-
+See the [./samples/](samples/) folder for sample bot implementations.
 
 
 Copyright (c) 2023 Direqt Inc.
