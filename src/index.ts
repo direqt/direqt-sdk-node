@@ -20,8 +20,8 @@ export class DireqtApi {
 }
 
 export class DireqtMessagingApi {
-    private readonly apiRoot: string = `https://gateway.direqt.io`;
-    private readonly path = `/agent/direqt/receiver`;
+    private readonly apiRoot: string = `https://gateway.direqt.io/v3`;
+    private readonly path = `/messages`;
 
     constructor(private config: DireqtApiConfiguration) {
         if (config._messagingApiRoot) {
@@ -53,11 +53,11 @@ export class DireqtMessagingApi {
             body.agentMessage.content.suggestions = suggestions;
         }
 
-        const params = {
-            access_token: this.config.accessToken,
+        const headers = {
+            Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.url, body, { params });
+        return await axios.post(this.url, body, { headers });
     }
 
     public async sendContentMessage(
@@ -72,11 +72,11 @@ export class DireqtMessagingApi {
             },
         };
 
-        const params = {
-            access_token: this.config.accessToken,
+        const headers = {
+            Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.url, body, { params });
+        return await axios.post(this.url, body, { headers });
     }
 
     public async sendStatusMessage(
@@ -91,11 +91,11 @@ export class DireqtMessagingApi {
             },
         };
 
-        const params = {
-            access_token: this.config.accessToken,
+        const headers = {
+            Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.url, body, { params });
+        return await axios.post(this.url, body, { headers });
     }
 
     public verifyMiddleware() {

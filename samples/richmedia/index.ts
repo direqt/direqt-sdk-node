@@ -93,6 +93,7 @@ app.post(
     '/',
     express.json({
         verify: (req: Request, res: Response, buf: Buffer) =>
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             ((<any>req)['rawBody'] = buf.toString()),
     }),
     direqt.messaging.verifyMiddleware(),
