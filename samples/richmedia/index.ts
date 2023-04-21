@@ -116,10 +116,14 @@ app.post(
                             },
                         };
 
-                        await direqt.messaging.sendContentMessage(
-                            userId,
-                            message
-                        );
+                        try {
+                            await direqt.messaging.sendContentMessage(
+                                userId,
+                                message
+                            );
+                        } catch (e) {
+                            console.error(e.response?.data);
+                        }
                     }
                     break;
                 case 'carousel':
@@ -146,10 +150,36 @@ app.post(
                                 ],
                             },
                         };
-                        await direqt.messaging.sendContentMessage(
-                            userId,
-                            message
-                        );
+
+                        try {
+                            await direqt.messaging.sendContentMessage(
+                                userId,
+                                message
+                            );
+                        } catch (e) {
+                            console.error(e.response?.data);
+                        }
+                    }
+                    break;
+                case 'file':
+                    {
+                        const url = `${imageRoot}/1.png`;
+
+                        const message: AgentContentMessage = {
+                            contentType: 'file',
+                            file: {
+                                url,
+                            },
+                        };
+
+                        try {
+                            await direqt.messaging.sendContentMessage(
+                                userId,
+                                message
+                            );
+                        } catch (e) {
+                            console.error(e.response?.data);
+                        }
                     }
                     break;
                 default: {
@@ -163,12 +193,21 @@ app.post(
                             suggestionType: 'reply',
                             text: 'carousel',
                         },
+                        {
+                            suggestionType: 'reply',
+                            text: 'file',
+                        },
                     ];
-                    await direqt.messaging.sendTextMessage(
-                        userId,
-                        message,
-                        suggestions
-                    );
+
+                    try {
+                        await direqt.messaging.sendTextMessage(
+                            userId,
+                            message,
+                            suggestions
+                        );
+                    } catch (e) {
+                        console.error(e.response?.data);
+                    }
                     break;
                 }
             }
