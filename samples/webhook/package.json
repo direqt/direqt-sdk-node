@@ -1,0 +1,20 @@
+{
+    "name": "direqt-webhook-example",
+    "version": "1.0.0",
+    "description": "Demonstrates APIs for updating webhookUrl with Direqt Messaging API",
+    "main": "index.js",
+    "private": true,
+    "scripts": {
+        "start": "ts-node index.ts"
+    },
+    "author": "Direqt Inc.",
+    "license": "ISC",
+    "dependencies": {
+        "direqt": "file:../.."
+    },
+    "devDependencies": {
+        "dotenv": "^16.0.3",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.0.4"
+    }
+}

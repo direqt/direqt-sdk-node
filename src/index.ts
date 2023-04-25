@@ -1,5 +1,10 @@
 import axios from 'axios';
-import { AgentContentMessage, AgentStatusMessage, Suggestion } from './message';
+import {
+    AgentContentMessage,
+    AgentStatusMessage,
+    Suggestion,
+    WebhookConfig,
+} from './message';
 import { verifyMiddleware } from './verify';
 
 export interface DireqtApiConfiguration {
@@ -21,7 +26,8 @@ export class DireqtApi {
 
 export class DireqtMessagingApi {
     private readonly apiRoot: string = `https://gateway.direqt.io/v3`;
-    private readonly path = `/messages`;
+    private readonly messagesPath = `/messages`;
+    private readonly webhookPath = `/webhook`;
 
     constructor(private config: DireqtApiConfiguration) {
         if (config._messagingApiRoot) {
@@ -29,8 +35,12 @@ export class DireqtMessagingApi {
         }
     }
 
-    private get url() {
-        return `${this.apiRoot}${this.path}`;
+    private get messagesUrl() {
+        return `${this.apiRoot}${this.messagesPath}`;
+    }
+
+    private get webhookConfigUrl() {
+        return `${this.apiRoot}${this.webhookPath}`;
     }
 
     public async sendTextMessage(
@@ -57,7 +67,7 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.url, body, { headers });
+        return await axios.post(this.messagesUrl, body, { headers });
     }
 
     public async sendContentMessage(
@@ -76,7 +86,7 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.url, body, { headers });
+        return await axios.post(this.messagesUrl, body, { headers });
     }
 
     public async sendStatusMessage(
@@ -95,7 +105,66 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.url, body, { headers });
+        return await axios.post(this.messagesUrl, body, { headers });
+    }
+
+    /**
+     * Retrieve the webhook configuration for this bot.
+     */
+    public async getWebhookConfig(): Promise<WebhookConfig> {
+        const headers = {
+            Authorization: `bearer ${this.config.accessToken}`,
+        };
+
+        const { data: webhookConfig } = await axios.get(this.webhookConfigUrl, {
+            headers,
+        });
+
+        return webhookConfig;
+    }
+
+    /**
+     * Create or update the webhook configuration for this bot.
+     *
+     * @param webhookUrl The url at which you want to receive messages.
+     * @param instanceId Optional identifier to include in every webhook message.
+     */
+    public async updateWebhookConfig(
+        config: WebhookConfig
+    ): Promise<WebhookConfig> {
+        const body = {
+            ...config,
+        };
+
+        const headers = {
+            Authorization: `bearer ${this.config.accessToken}`,
+        };
+
+        const { data: webhookConfig } = await axios.patch(
+            this.webhookConfigUrl,
+            body,
+            {
+                headers,
+            }
+        );
+
+        return webhookConfig;
+    }
+
+    /**
+     * Delete the webhook configuration for this bot.
+     *
+     * Upon successful deletion, Direqt will no longer send messages to the
+     * webhook previously registered with this bot.
+     */
+    public async deleteWebhookConfig(): Promise<void> {
+        const headers = {
+            Authorization: `bearer ${this.config.accessToken}`,
+        };
+
+        const { data } = await axios.delete(this.webhookConfigUrl, { headers });
+
+        return data;
     }
 
     public verifyMiddleware() {

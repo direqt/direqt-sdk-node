@@ -39,3 +39,8 @@ export interface AgentStatusMessage {
     statusType: 'typing' | 'read';
     relatedMessageId?: string;
 }
+
+export interface WebhookConfig {
+    webhookUrl: string;
+    instanceId?: string;
+}
