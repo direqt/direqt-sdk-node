@@ -13,6 +13,11 @@ export interface DireqtApiConfiguration {
     _messagingApiRoot?: string;
 }
 
+export interface SendResponse {
+    status: number;
+    statusText: string;
+}
+
 export class DireqtApi {
     private _messaging: DireqtMessagingApi;
     constructor(private config: DireqtApiConfiguration) {
@@ -43,11 +48,36 @@ export class DireqtMessagingApi {
         return `${this.apiRoot}${this.webhookPath}`;
     }
 
+    private async send(body, headers): Promise<SendResponse> {
+        try {
+            const axiosResponse = await axios.post(this.messagesUrl, body, {
+                headers,
+            });
+
+            return {
+                status: axiosResponse.status,
+                statusText: axiosResponse.statusText,
+            };
+        } catch (error) {
+            throw new Error(
+                JSON.stringify(
+                    {
+                        status: error.response.status,
+                        statusText: error.response.statusText,
+                        data: error.response.data,
+                    },
+                    null,
+                    5
+                )
+            );
+        }
+    }
+
     public async sendTextMessage(
         userId: string,
         text: string,
         suggestions?: Suggestion[]
-    ) {
+    ): Promise<SendResponse> {
         const body = {
             userId,
             agentMessage: {
@@ -67,13 +97,13 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.messagesUrl, body, { headers });
+        return this.send(body, headers);
     }
 
     public async sendContentMessage(
         userId: string,
         contentMessage: AgentContentMessage
-    ) {
+    ): Promise<SendResponse> {
         const body = {
             userId,
             agentMessage: {
@@ -86,13 +116,13 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.messagesUrl, body, { headers });
+        return this.send(body, headers);
     }
 
     public async sendStatusMessage(
         userId: string,
         statusMessage: AgentStatusMessage
-    ) {
+    ): Promise<SendResponse> {
         const body = {
             userId,
             agentMessage: {
@@ -105,7 +135,7 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.messagesUrl, body, { headers });
+        return this.send(body, headers);
     }
 
     /**
