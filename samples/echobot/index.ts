@@ -1,5 +1,4 @@
-/**
- * Simple Direqt bot demonstrating rich media.
+/**.
  *
  * This sample demonstrates how to connect your chatbot to Direqt to send and
  * receive messages.
