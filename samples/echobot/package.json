@@ -4,12 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "npm install express @types/express direqt dotenv && npm install -D typescript tsc-node && tsc --init ",
+    "build": "tsc -p .",
+    "start": "npm run build &&  node index.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@types/express": "^4.17.17",
+    "direqt": "^1.4.0",
+    "dotenv": "^16.3.0",
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "tsc-node": "^0.0.3",
+    "typescript": "^5.1.3"
   }
 }
