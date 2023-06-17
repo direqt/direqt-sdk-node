@@ -19,7 +19,7 @@ const rawBodyExtractor = (req, res, buf) => {
     req.rawBody = buf.toString();
 };
 
-app.use(
+app.post(
     '/webhook',
     express.json({ verify: rawBodyExtractor }),
     direqt.messaging.verifyMiddleware(),
