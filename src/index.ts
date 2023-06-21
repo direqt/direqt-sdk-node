@@ -43,11 +43,19 @@ export class DireqtMessagingApi {
         return `${this.apiRoot}${this.webhookPath}`;
     }
 
+    /**
+     * Send a text message to the given user
+     *
+     * @throws {Error} when the send is unsuccessful
+     * @param userId id of the recipient user
+     * @param text text to send to the user
+     * @param suggestions tapable responses for the client to accompany the message
+     */
     public async sendTextMessage(
         userId: string,
         text: string,
         suggestions?: Suggestion[]
-    ) {
+    ): Promise<void> {
         const body = {
             userId,
             agentMessage: {
@@ -67,13 +75,22 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.messagesUrl, body, { headers });
+        await axios.post(this.messagesUrl, body, {
+            headers,
+        });
     }
 
+    /**
+     * Send a message with content (rich card, carousel, etc.) to the given user
+     *
+     * @throws {Error} when the send is unsuccessful
+     * @param userId id of the recipient user
+     * @param contentMessage message to accompany the content sent to the user
+     */
     public async sendContentMessage(
         userId: string,
         contentMessage: AgentContentMessage
-    ) {
+    ): Promise<void> {
         const body = {
             userId,
             agentMessage: {
@@ -86,13 +103,22 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.messagesUrl, body, { headers });
+        await axios.post(this.messagesUrl, body, {
+            headers,
+        });
     }
 
+    /**
+     * send messaging status (read, typing, etc.) to the given user
+     *
+     * @throws {Error} when the send is unsuccessful
+     * @param userId id of the recipient user
+     * @param statusMessage object describing the type of status to send
+     */
     public async sendStatusMessage(
         userId: string,
         statusMessage: AgentStatusMessage
-    ) {
+    ): Promise<void> {
         const body = {
             userId,
             agentMessage: {
@@ -105,7 +131,9 @@ export class DireqtMessagingApi {
             Authorization: `bearer ${this.config.accessToken}`,
         };
 
-        return await axios.post(this.messagesUrl, body, { headers });
+        await axios.post(this.messagesUrl, body, {
+            headers,
+        });
     }
 
     /**
