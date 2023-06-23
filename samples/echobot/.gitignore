@@ -1,1 +1,4 @@
 *.js
+**/out 
+.env 
+node_modules

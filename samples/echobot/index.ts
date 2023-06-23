@@ -39,8 +39,6 @@ import dotenv from 'dotenv';
  * These values should be retrieved from your bot's "Webhook" settings
  * page on the Direqt console.
  */
-
-
 dotenv.config();
 
 const accessToken: string = process.env.DIREQT_ACCESS_TOKEN as string;
@@ -59,7 +57,7 @@ const app = express();
 const rawBodyExtractor = (req: Request, res: Response, buf: Buffer) => {
     (<any> req).rawBody = buf.toString();
 };
-app.use(
+app.post(
     '/webhook',
     express.json({ verify: rawBodyExtractor }),
     direqt.messaging.verifyMiddleware(),
