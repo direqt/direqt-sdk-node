@@ -53,6 +53,8 @@ const direqt = new DireqtApi({
 });
 
 const app = express();
+//! Trying to get the git to work, will delete this comment later
+
 
 const rawBodyExtractor = (req: Request, res: Response, buf: Buffer) => {
     (<any> req).rawBody = buf.toString();
