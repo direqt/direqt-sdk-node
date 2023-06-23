@@ -54,7 +54,6 @@ const direqt = new DireqtApi({
 
 const app = express();
 
-//! Will remove this comment later
 const rawBodyExtractor = (req: Request, res: Response, buf: Buffer) => {
     (<any> req).rawBody = buf.toString();
 };
