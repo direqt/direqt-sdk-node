@@ -57,6 +57,7 @@ const app = express();
 const rawBodyExtractor = (req: Request, res: Response, buf: Buffer) => {
     (<any> req).rawBody = buf.toString();
 };
+
 app.post(
     '/webhook',
     express.json({ verify: rawBodyExtractor }),
