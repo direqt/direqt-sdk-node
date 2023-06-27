@@ -1,7 +1,7 @@
 {
   "name": "echo-bot",
   "version": "1.0.0",
-  "description": "Simple bot demonstrating rich media with Direqt Messaging API",
+  "description": "Simple bot demonstrating messages with Direqt Messaging API",
   "main": "index.js",
   "private": true,
   "scripts": {
