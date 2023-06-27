@@ -1,5 +1,4 @@
 /**.
- *
  * This sample demonstrates how to connect your chatbot to Direqt to send and
  * receive messages.
  *
