@@ -70,7 +70,7 @@ const captureImageRootMiddleware = (
     next: NextFunction
 ) => {
     const hostname = req.headers.host;
-    const protocol = req.protocol;
+    const protocol = req.headers['x-forwarded-proto'] || req.protocol;
     imageRoot = `${protocol}://${hostname}`;
     next();
 };
