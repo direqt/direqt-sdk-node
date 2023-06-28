@@ -1,4 +1,6 @@
 /**.
+ * Simple Direqt echo bot
+ *
  * This sample demonstrates how to connect your chatbot to Direqt to send and
  * receive messages.
  *
@@ -27,10 +29,9 @@
  *  $ npm install && npm start
  */
 
-import express , { Request, Response } from 'express' 
 import { DireqtApi } from 'direqt';
 import dotenv from 'dotenv';
-
+import express, { Request, Response } from 'express';
 
 /**
  * Read access token and signing secret from the .env file.
@@ -54,7 +55,8 @@ const direqt = new DireqtApi({
 const app = express();
 
 const rawBodyExtractor = (req: Request, res: Response, buf: Buffer) => {
-    (<any> req).rawBody = buf.toString();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    (<any>req).rawBody = buf.toString();
 };
 
 app.post(
