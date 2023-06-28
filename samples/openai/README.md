@@ -33,7 +33,6 @@ This README provides an example of integrating Direqt's SDK with OpenAI for buil
 
 2. Install Dependencies to Your Project 
 ``` $ npm install ```
-``` $ npm install -D @typescript @types/express ```
 
 ## Setup 
 To set up this project, you will need to create a .env file.
@@ -44,7 +43,7 @@ Before running the project you will need to configure your OpenAI API Key, Direq
 ## To Find Your OpenAI API Key:
    - To obtain your OpenAI API key, you need to access your personal OpenAI account and locate the API keys section.
    - Inside your account, create a new secret key, assign it a name, and copy the key.
-   - Paste the copied API key into your .env file. You can refer to the provided .env.sample file for guidance on how the naming conventions should be structured.
+   - Paste the copied API key into your .env file. 
 
 ## To Find Your Direqt Access Token, Signing Secret and Configure Your Chatbot: 
    - Open your terminal and execute the command ```ngrok http 3000``` Note that 3000 represents the port number on which your server is running. If you are utilizing a different port, make sure to adjust the port number accordingly in the code.
@@ -52,29 +51,17 @@ Before running the project you will need to configure your OpenAI API Key, Direq
    - Visit Direqt's website and log in using your credentials: https://console.direqt.io/login
    - Click on "Add ChatBot".
    - Proceed with the necessary steps to configure your chatbot.
-   - Go to the Webhook section and insert your ngrok URL in the designated "Webhook URL" field. Save the changes.
-   - To locate your Access Token and Signing Secret, revisit the same page within the "Webhook" section. The keys should be displayed below the location where you entered your ngrok URL, within the credentials section.
+   - Go to the Webhook section and insert your ngrok URL in the designated "Webhook URL" field. 
+   - The Access Token and Signing Secret should be displayed below the location where you entered your ngrok URL, within the credentials section.
 
 
    ## Back on you development machine:
-
-   - Paste your Direqt keys into your  ```.env``` file. For reference see the .env.sample on how the naming conventions should look. 
+   - Paste your Direqt keys into your  ```.env``` file. 
    - Run your code: ``` $ npm run start ```
    - NOTE: In order for your ngrok http 3000 url to keep working, you must have ngrok running in a separate terminal as ```npm run start``` runs in the background.
 
    ## Back on your Direqt Console 
    You should see your OpenAI Chatbot live and ready to go! Congratulations! You have successfully integrated OpenAI with Direqt's console.
-
-
-   ## Usage :  
-   Inside this repository, you will find code that simplifies the process of creating a fully functional chatbot. Customize the ```chatResponse``` constant to suit your requirements. Here are some examples of customizations you can make:
-   - Instruct the chatbot to respond in a specific tone or style.
-   - Define a specific phrase for the chatbot to always respond with.
-   - Specify a particular emoji for the chatbot's responses.
-
-   ## Limitations
-   It is important to note that this chatbot example has limitations such as: it does not hold a conversation history, GPT-3.5-turbo has a maximum token limit of 4096 tokens. This includes both input and output tokens. If the conversation exceeds this limit, you will need to truncate or reduce the text to fit within the token constraint. It's important to keep track of the token count, as exceeding the limit may result in incomplete responses or additional charges for extra tokens.
-
 
 
    Copyright (c) 2023 Direqt Inc.

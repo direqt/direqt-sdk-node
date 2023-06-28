@@ -31,25 +31,6 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 /**
- * This reads Direqt access token, signing secret, and the OpenAI key from the .env file.
- * The Direqt values should be retrieved from your bot's "Webhook" settings
- * page on the Direqt console.
- * 
- * Your OpenAI key should be under your personal api keys on your OpenAI profile
- */
-
-
-
-
- const chatResponse = 'You are a helpful assistant. You say hello';
-
- /**
-  * This can be customized to your liking. It is the first message that the bot will send to the user.
-  */
-
-
-
-/**
  * Direqt messaging webhook.
  *
  * This is the endpoint that Direqt will call when a message is sent to the bot.
@@ -67,47 +48,26 @@ app.post(
   async (req, res) => {
     const { userId, userMessage } = req.body;
     const text = userMessage.content?.text;
-    const sendToOpenAi = await getOpenAIResponse(text);
     if (text) {
+      const reply = await getOpenAIResponse(text);
       console.log(text);
-      direqt.messaging.sendTextMessage(userId, sendToOpenAi);
+      direqt.messaging.sendTextMessage(userId, reply);
     }
     res.sendStatus(200);
   }
 );
 
-
-
-/**
- * These are the functions that get the responses from OpenAI, and returns it to be used in the messaging webhook.
- */
-
-
 const getOpenAIResponse = async (prompt: string): Promise<string> => {
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: [
-      { role: "system", content: chatResponse },
+      { role: "system", content: 'You are a helpful AI assistant.' },
       { role: "user", content: prompt },
     ],
-    max_tokens: 1000,
-    temperature: 1,
   });
 
   return response.data.choices[0].message?.content || '';
 };
-
-
-
-app.post("/", async ({ body: { prompt } }: Request, res: Response) => {
-  const chatResponse = await getOpenAIResponse(prompt);
-
-  return res.json({
-    success: true,
-    data: chatResponse,
-  });
-});
-
 
 const PORT = process.env.PORT || 3000;
 
