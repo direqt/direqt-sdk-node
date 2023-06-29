@@ -29,10 +29,8 @@ const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
 const openai = new OpenAIApi(configuration);
-
 /**
  * Direqt messaging webhook.
- *
  * This is the endpoint that Direqt will call when a message is sent to the bot.
  *
  * It has simple logic to demonstrating sending text messages.

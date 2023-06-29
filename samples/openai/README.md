@@ -1,9 +1,7 @@
 # OpenAI integration with Direqt Chatbot Sample
 
-
 ## Description:
 This README provides an example of integrating Direqt's SDK with OpenAI for building a chatbot. It is aimed at developers familiar with OpenAI's chatbot capabilities who want to leverage Direqt's console.
-
 
 ## Technologies Used 
 - ```Typescript```
@@ -11,20 +9,17 @@ This README provides an example of integrating Direqt's SDK with OpenAI for buil
 - ```OpenAI```
 - ```Ngrok ```
 
-
 ## Documentation and Resources 
 - [Direqt Documentation](https://docs.direqt.ai/messaging-api/)
 - [OpenAI Documentation](https://platform.openai.com/docs/api-reference)
 - [Ngrok Documentation](https://ngrok.com/docs)
 - [Direqt Console](https://console.direqt.io/login)
 
-
 ## Pre-requisites 
 - ```Node: v18.16.0```
 - ```Direqt account``` ```Direqt Access Token``` ```Direqt Signing Secret```
 - ```OpenAI account``` ```OpenAI API Key```
 - ```Ngrok``` 
-
 
 ## Installation 
 
@@ -38,7 +33,6 @@ This README provides an example of integrating Direqt's SDK with OpenAI for buil
 To set up this project, you will need to create a .env file.
 Navigate inside your  ```.env``` file and paste the correct naming conventions which can be found in the .env.sample.
 Before running the project you will need to configure your OpenAI API Key, Direqt's Signing Secret, and Access Token. 
-
 
 ## To Find Your OpenAI API Key:
    - To obtain your OpenAI API key, you need to access your personal OpenAI account and locate the API keys section.
@@ -54,7 +48,6 @@ Before running the project you will need to configure your OpenAI API Key, Direq
    - Go to the Webhook section and insert your ngrok URL in the designated "Webhook URL" field. 
    - The Access Token and Signing Secret should be displayed below the location where you entered your ngrok URL, within the credentials section.
 
-
    ## Back on you development machine:
    - Paste your Direqt keys into your  ```.env``` file. 
    - Run your code: ``` $ npm run start ```
@@ -62,6 +55,5 @@ Before running the project you will need to configure your OpenAI API Key, Direq
 
    ## Back on your Direqt Console 
    You should see your OpenAI Chatbot live and ready to go! Congratulations! You have successfully integrated OpenAI with Direqt's console.
-
 
    Copyright (c) 2023 Direqt Inc.
