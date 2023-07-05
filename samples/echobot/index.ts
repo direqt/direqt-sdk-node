@@ -21,13 +21,19 @@
  *
  * Back on your development machine:
  *
- * - create a .env file in this directory with the following contents:
+ *  - rename the .env.sample file in this directory to .env, and populate it with:
  *  DIREQT_ACCESS_TOKEN=<your bot's access token>
  *  DIREQT_SIGNING_SECRET=<your bot's signing secret>
  *
  * $ npm install # one time to install dependencies 
  * $ npm start
+ * 
+* Documentation and resources:
+ *
+ *  Direqt Messaging API Documentation: https://docs.direqt.ai/messaging-api
+ *  Ngrok Documentation: https://ngrok.com/docs
  */
+ 
 
 import { DireqtApi } from 'direqt';
 import dotenv from 'dotenv';
