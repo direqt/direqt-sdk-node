@@ -1,15 +1,22 @@
 {
-  "name": "echobot",
+  "name": "echo-bot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Simple bot demonstrating messages with Direqt Messaging API",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+      "start": "ts-node index.ts"
   },
-  "author": "",
+  "author": "Direqt Inc.",
   "license": "ISC",
   "dependencies": {
-    "@types/express": "^4.17.17",
-    "express": "^4.18.2"
+      "direqt": "file:../..",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2"
+  },
+  "devDependencies": {
+      "@types/express": "^4.17.17",
+      "ts-node": "^10.9.1",
+      "typescript": "^5.0.4"
   }
 }
