@@ -5,6 +5,7 @@ export interface AgentContentMessage {
     carousel?: Carousel;
     file?: File;
     suggestions?: Suggestion[];
+    menu?: { suggestions: Suggestion[] };
 }
 
 export interface Card {

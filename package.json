@@ -2,7 +2,7 @@
     "name": "direqt",
     "description": "Node.js library for the Direqt API",
     "author": "Direqt Inc.",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "repository": {
         "type": "git",
         "url": "https://github.com/direqt/direqt-sdk-js.git"
