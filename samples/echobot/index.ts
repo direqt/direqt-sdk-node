@@ -25,20 +25,18 @@
  *  DIREQT_ACCESS_TOKEN=<your bot's access token>
  *  DIREQT_SIGNING_SECRET=<your bot's signing secret>
  *
- * $ npm install # one time to install dependencies 
+ * $ npm install # one time to install dependencies
  * $ npm start
- * 
-* Documentation and resources:
+ *
+ * Documentation and resources:
  *
  *  Direqt Messaging API Documentation: https://docs.direqt.ai/messaging-api
  *  Ngrok Documentation: https://ngrok.com/docs
  */
- 
 
 import { DireqtApi } from 'direqt';
 import dotenv from 'dotenv';
 import express, { Request, Response } from 'express';
-
 
 dotenv.config();
 
