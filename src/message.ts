@@ -34,6 +34,10 @@ export interface Suggestion {
         uri: string;
     };
     reply?: void;
+    style?: {
+        backgroundColor?: string; // hex color code e.g. #FFFFFF
+        textColor?: string; // hex color code e.g. #000000
+    };
 }
 
 export interface AgentStatusMessage {
